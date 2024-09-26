@@ -2,7 +2,7 @@
 
 ## 📦 Descripción del Proyecto
 
-**Perolito Shop** es un sistema de gestión de productos que permite a los usuarios navegar por un catálogo de productos, agregar artículos a un carrito de compras y realizar compras en línea. La aplicación cuenta con autenticación de usuarios y una interfaz amigable para la gestión de productos.
+**Wompi Gateway** es un sistema de gestión de productos que permite a los usuarios navegar por un catálogo de productos, agregar artículos a un carrito de compras y realizar compras en línea. La aplicación cuenta con autenticación de usuarios y una interfaz amigable para la gestión de productos.
 
 ## 🚀 Tecnologías Utilizadas
 
@@ -29,7 +29,7 @@
 1. **Clonar el Repositorio**:
    ```bash
    git clone https://github.com/gabrieldpzz/wompi-gateway.git
-   cd perolito-shop
+   cd wompi-gateway
 
 2. **Configuración de dependencias**:   
 Asegúrese de tener instalado Maven en su sistema. Para instalar Maven, siga las instrucciones en la [documentación oficial](https://maven.apache.org/install.html).
