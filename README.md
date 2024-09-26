@@ -62,16 +62,15 @@ Crear la tabla productos en la base de datos:
    6. Para cerrar sesión, haga clic en el botón "Cerrar Sesión" en la barra de navegación.
 
 6. **🌐 Rutas de la API**
-    -GET /: Muestra la lista de productos (requiere autenticación).
-   
-    -GET /login: Muestra la página de inicio de sesión.
-    -POST /login: Inicia sesión y establece la sesión del usuario.
-    -POST /carrito: Agrega un producto al carrito.
-    -POST /eliminarUnidad: Elimina una unidad de un producto del carrito.
-    -POST /eliminarTodo: Elimina todas las unidades de un producto del carrito.
+    - GET /: Muestra la lista de productos (requiere autenticación).
+    - GET /login: Muestra la página de inicio de sesión.
+    - POST /login: Inicia sesión y establece la sesión del usuario.
+    - POST /carrito: Agrega un producto al carrito.
+    - POST /eliminarUnidad: Elimina una unidad de un producto del carrito.
+    - POST /eliminarTodo: Elimina todas las unidades de un producto del carrito.
 
 6. **🌐 Rutas de la API Wompi**
-   -GET /: Muestra el formulario para realizar una transacción de compra.
-   -POST /transaccion: Realiza una transacción de compra utilizando los datos de la tarjeta de crédito y la información del comprador.
-   -POST /transaccion/enlacePago: Genera un enlace de pago para el monto especificado y redirige al usuario a esa URL.
+   - GET /: Muestra el formulario para realizar una transacción de compra.
+   - POST /transaccion: Realiza una transacción de compra utilizando los datos de la tarjeta de crédito y la información del comprador.
+   - POST /transaccion/enlacePago: Genera un enlace de pago para el monto especificado y redirige al usuario a esa URL.
 
