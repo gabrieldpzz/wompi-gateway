@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Carrito de Compras</h1>
+
+    <div class="advertencia" id="advertencia" style="display:none;">
+        <span class="closebtn" onclick="cerrarAdvertencia()">&times;</span>
+        Tu carrito supera los $1000, por favor elimina productos. Si deseas continuar, por favor hazlo en 2 o más pagos.
+    </div>
+
+    <div class="advertencia" id="advertencia-0" style="display:none;">
+        <span class="closebtn" onclick="cerrarAdvertenciaa()">&times;</span>
+        Tu carrito está vacío, por favor agrega productos.
+    </div>
+
+
+
+    <div class="carrito-tabla">
+        <table>
+            <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Imagen</th>
+                <th>Descripción</th>
+                <th>Precio Unitario</th>
+                <th>Cantidad</th>
+                <th>Subtotal</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="producto : ${carrito}">
+                <td th:text="${producto.nombre}"></td>
+                <td>
+                    <img th:src="${producto.imagen}" alt="Imagen de producto" style="width: 50px; height: auto;" />
+                </td>
+                <td th:text="${producto.descripcion}"></td>
+                <td th:text="'$' + ${producto.precio}"></td>
+                <td th:text="${producto.cantidad}"></td>
+                <td th:text="'$' + ${producto.precio * producto.cantidad}"></td>
+                <td>
+                    <!-- Botón para eliminar 1 unidad -->
+                    <form th:action="@{/eliminarUnidad}" method="post" style="display:inline;">
+                        <input type="hidden" name="idProducto" th:value="${producto.id}" />
+                        <button type="submit" class="btn-eliminar">Eliminar 1</button>
+                    </form>
+
+                    <!-- Botón para eliminar todas las unidades -->
+                    <form th:action="@{/eliminarTodo}" method="post" style="display:inline;">
+                        <input type="hidden" name="idProducto" th:value="${producto.id}" />
+                        <button type="submit" class="btn-eliminar">Eliminar todo</button>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="carrito-total">
+        <p>Total: <span th:text="'$' + ${total}"></span></p>
+    </div>
+
+    <div class="carrito-acciones">
+        <form th:action="@{/form}" method="GET">
+            <input type="hidden" name="monto" th:value="${total}" />
+            <button type="submit" id="btn-pagar" class="btn-pagar" onclick="validarPago(event)">Pagar</button>
+        </form>
+        <a href="/productos" class="btn-seguir-comprando">Seguir comprando</a>
+    </div>
+    <p style="display:none;">Total: <span id="totalMonto" th:text="'$' + ${total}"></span></p> <!-- Ocultado -->
+    <script>
+        function validarPago(event) {
+            // Obtener el monto total
+            const totalTexto = document.getElementById("totalMonto").textContent;
+            const total = parseFloat(totalTexto.replace('$', '').replace(',', '').trim());
+
+            // Verificar si el monto es mayor a 1000
+            if (total > 1000 ) {
+                event.preventDefault(); // Evitar el envío del formulario
+                // Mostrar la advertencia
+                const advertencia = document.getElementById("advertencia");
+                advertencia.style.display = "block";
+            }
+
+            if (total <= 0) {
+                event.preventDefault(); // Evitar el envío del formulario
+                // Redirigir al formulario de pago
+                const advertencia = document.getElementById("advertencia-0");
+                advertencia.style.display = "block";
+            }
+        }
+
+        function cerrarAdvertencia() {
+            const advertencia = document.getElementById("advertencia");
+            advertencia.style.display = "none"; // Ocultar la advertencia
+        }
+
+        function cerrarAdvertenciaa() {
+            const advertencia = document.getElementById("advertencia-0");
+            advertencia.style.display = "none"; // Ocultar la advertencia
+        }
+    </script>
+
+    <script src="/page1.js" type="module"></script>
+
+</div>
+</body>
+</html>

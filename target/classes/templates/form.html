@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de Compra</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+  <h2>Formulario de Compra</h2>
+  <div class="payment-options">
+    <button id="pagoRapidoBtn" class="option-btn active">
+      <span class="icon">💳</span>
+      Pago Rápido
+    </button>
+    <button id="generarLinkBtn" class="option-btn">
+      <span class="icon">🔗</span>
+      Generar Link de Pago
+    </button>
+  </div>
+  <div id="pagoRapidoForm" class="payment-section">
+    <form th:action="@{/transaccion}" method="POST" class="formulario-compra">
+      <div class="form-group">
+        <label for="numero_tarjeta">Número de Tarjeta:</label>
+        <input type="text" id="numero_tarjeta" name="numero_tarjeta" required>
+      </div>
+
+      <div class="form-group">
+        <label for="cvv">CVV:</label>
+        <input type="text" id="cvv" name="cvv" required>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="mes_vencimiento">Mes de Vencimiento:</label>
+          <input type="number" id="mes_vencimiento" name="mes_vencimiento" required>
+        </div>
+
+        <div class="form-group">
+          <label for="anio_vencimiento">Año de Vencimiento:</label>
+          <input type="number" id="anio_vencimiento" name="anio_vencimiento" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="monto">Monto:</label>
+        <input type="number" id="monto" name="monto" th:value="${monto}" readonly required>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="nombre">Nombre:</label>
+          <input type="text" id="nombre" name="nombre" required>
+        </div>
+
+        <div class="form-group">
+          <label for="apellido">Apellido:</label>
+          <input type="text" id="apellido" name="apellido" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="ciudad">Ciudad:</label>
+        <input type="text" id="ciudad" name="ciudad" required>
+      </div>
+
+      <div class="form-group">
+        <label for="direccion">Dirección:</label>
+        <input type="text" id="direccion" name="direccion" required>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="codigo_postal">Código Postal:</label>
+          <input type="text" id="codigo_postal" name="codigo_postal" required>
+        </div>
+
+        <div class="form-group">
+          <label for="telefono">Teléfono:</label>
+          <input type="text" id="telefono" name="telefono" required>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-realizar-compra">Realizar Compra</button>
+    </form>
+  </div>
+  <div id="generarLinkForm" class="payment-section" style="display: none;">
+    <form th:action="@{/transaccion/enlacePago}" method="POST" class="formulario-generar-link">
+      <input type="hidden" name="monto" th:value="${monto}"/>
+      <button type="submit" class="btn-generar-pago">Generar Pago</button>
+    </form>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const pagoRapidoBtn = document.getElementById('pagoRapidoBtn');
+    const generarLinkBtn = document.getElementById('generarLinkBtn');
+    const pagoRapidoForm = document.getElementById('pagoRapidoForm');
+    const generarLinkForm = document.getElementById('generarLinkForm');
+
+    pagoRapidoBtn.addEventListener('click', function() {
+      pagoRapidoForm.style.display = 'block';
+      generarLinkForm.style.display = 'none';
+      pagoRapidoBtn.classList.add('active');
+      generarLinkBtn.classList.remove('active');
+    });
+
+    generarLinkBtn.addEventListener('click', function() {
+      pagoRapidoForm.style.display = 'none';
+      generarLinkForm.style.display = 'block';
+      generarLinkBtn.classList.add('active');
+      pagoRapidoBtn.classList.remove('active');
+    });
+  });
+</script>
+</body>
+</html>

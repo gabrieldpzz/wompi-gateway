@@ -1,0 +1,630 @@
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: rgb(0, 0, 0);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 30px;
+}
+
+
+.producto-card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 500px; /* Altura fija para todas las tarjetas */
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    overflow: hidden; /* Evita desbordamiento */
+    text-overflow: ellipsis; /* Agrega puntos suspensivos si hay desbordamiento */
+    white-space: nowrap; /* Evita saltos de línea */
+}
+
+.producto-card:hover {
+    transform: translateY(-5px);
+}
+
+.advertencia {
+    background-color: #ffcc00; /* Color amarillo */
+    color: #333; /* Texto oscuro */
+    padding: 15px;
+    border: 1px solid #ff9900; /* Borde anaranjado */
+    position: relative; /* Para el botón de cerrar */
+    margin-bottom: 20px; /* Espacio debajo de la advertencia */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+
+.btn-eliminar {
+    background-color: #e63946; /* Color rojo */
+    color: white; /* Texto blanco */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 20px; /* Espaciado interno */
+    cursor: pointer; /* Cambiar el cursor al pasar el ratón */
+    font-size: 16px; /* Tamaño de fuente */
+    transition: background-color 0.3s ease; /* Transición suave al cambiar el color */
+}
+
+
+
+
+.productos-grid {
+    display: grid;
+    gap: 20px;
+    justify-content: center; /* Centra las tarjetas */
+    grid-template-columns: repeat(auto-fill, 300px); /* Ajusta las tarjetas para que todas midan 300px de ancho */
+}
+
+.card {
+    width: 300px;
+    height: 630px;
+    margin: auto;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Añadir transición para un efecto suave */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Aumenta el tamaño de la tarjeta en un 5% */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Cambia la sombra para hacerla más intensa */
+}
+
+
+.card img {
+    width: 100%;  /* La imagen ocupa todo el ancho de su contenedor */
+    height: 400px; /* Establece una altura fija de 400px */
+    max-height: 400px; /* Limita la altura a 400px */
+    object-fit: cover; /* Recorta la imagen para ajustarse al contenedor */
+}
+
+.producto-nombre {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 10px 0; /* Espaciado */
+    text-overflow: ellipsis; /* Agrega puntos suspensivos si el nombre es largo */
+    white-space: nowrap;
+    overflow: hidden; /* Evita desbordamientos */
+}
+
+.price {
+    color: grey;
+    font-size: 22px;
+    margin: 10px 0; /* Espaciado */
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Asegura que los elementos se distribuyan de manera uniforme */
+    height: 100%; /* Asegura que todas las tarjetas tengan la misma altura */
+    text-align: center;
+}
+
+/* Import Google font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    min-height: 100vh;
+    width: 100%;
+    background: #ffffff;
+}
+
+#signoutbtn {
+    height: 50px;
+    padding: 0 15px;
+    font-size: 17px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    outline: none;
+    color: #fff;
+    background: #009579;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+#signoutbtn:hover {
+    background: #006653;
+}
+
+#user-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+}
+
+#user-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+#session-actions {
+    display: flex;
+    align-items: center;
+}
+
+#logout-button {
+    padding: 8px 12px;
+    background-color: #ff4b5c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#logout-button:hover {
+    background-color: #e63946;
+}
+
+
+.container-login{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    max-width: 430px;
+    width: 100%;
+    background: #fff;
+    border-radius: 7px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+}
+.container .registration{
+    display: none;
+}
+.container .forgot{
+    display:none;
+}
+#check{
+    display: none;
+}
+.container .form{
+    padding: 2rem;
+}
+.form header{
+    font-size: 2rem;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+.form input{
+    height: 50px;
+    width: 100%;
+    padding: 0 15px;
+    font-size: 17px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    outline: none;
+}
+.form input:focus{
+    box-shadow: 0 1px 0 rgb(255, 255, 255);
+}
+.form input.button{
+    color: #fff;
+    background: #009579;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+.form input.button:hover{
+    background: #006653;
+}
+.signup{
+    font-size: 17px;
+    text-align: center;
+}
+.signup a{
+    color: #009579;
+    cursor: pointer;
+}
+.signup a:hover{
+    text-decoration: underline;
+}
+
+
+.producto-descripcion {
+    font-size: 0.9em;
+    color: #555;
+    margin: 10px 0;
+    overflow: hidden;
+    line-height: 1.4em; /* Ajusta la altura de línea para mayor legibilidad */
+    max-height: 2.8em; /* Limita el texto a dos líneas (2 * 1.4em) */
+    text-overflow: ellipsis; /* Puntos suspensivos si el texto es largo */
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limitar a 3 líneas */
+    -webkit-box-orient: vertical;
+}
+
+.card button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+    margin-top: auto; /* Empuja el botón hacia abajo */
+}
+
+.card button:hover {
+    opacity: 0.7;
+}
+
+
+
+
+
+.btn-eliminar:hover {
+    background-color: #d62839; /* Rojo más oscuro al pasar el ratón */
+}
+
+/* The alert message box */
+.alert {
+    padding: 20px;
+    background-color: #f44336; /* Red */
+    color: white;
+    margin-bottom: 15px;
+}
+
+/* The close button */
+.closebtn {
+    margin-left: 15px;
+    color: #000000;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+    color: black;
+}
+
+.advertencia {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 20px;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    text-align: center;
+    width: 50%;
+    margin: 20px auto;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+
+
+.producto-imagen img {
+    width: 100%; /* La imagen ocupa todo el ancho de su contenedor */
+    height: 200px; /* Altura fija para todas las imágenes */
+    object-fit: cover; /* Recorta la imagen si es necesario para ajustarse al tamaño */
+    border-radius: 8px; /* Bordes redondeados para la imagen */
+    margin-bottom: 10px;
+}
+
+.producto-info {
+    flex-grow: 1; /* Permite que el contenido crezca */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Espaciado uniforme entre elementos */
+}
+
+
+
+
+
+.producto-precio {
+    font-size: 1.2em;
+    color: #333;
+}
+
+.btn-agregar {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.btn-agregar:hover {
+    background-color: #45a049;
+}
+
+/* Estilos para el carrito de compras */
+.carrito-tabla {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+th {
+    background-color: #f8f8f8;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.carrito-total {
+    text-align: right;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.carrito-acciones {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-pagar, .btn-seguir-comprando {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn-pagar {
+    background-color: #27ae60;
+    color: white;
+}
+
+.btn-pagar:hover {
+    background-color: #2ecc71;
+}
+
+.btn-seguir-comprando {
+    background-color: #3498db;
+    color: white;
+}
+
+.btn-seguir-comprando:hover {
+    background-color: #2980b9;
+}
+
+/* Estilos para el formulario de pago */
+.carrito-tabla {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+th {
+    background-color: #f8f8f8;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.carrito-total {
+    text-align: right;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.carrito-acciones {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-pagar, .btn-seguir-comprando {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn-pagar {
+    background-color: #27ae60;
+    color: white;
+}
+
+.btn-pagar:hover {
+    background-color: #2ecc71;
+}
+
+.btn-seguir-comprando {
+    background-color: #3498db;
+    color: white;
+}
+
+.btn-seguir-comprando:hover {
+    background-color: #2980b9;
+}
+
+/* Estilos para el formulario de pago */
+
+.payment-options {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    gap: 20px;
+}
+
+.option-btn {
+    padding: 15px 30px;
+    font-size: 18px;
+    background-color: #fff;
+    border: 2px solid #3498db;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    color: #3498db;
+}
+
+.option-btn:hover {
+    background-color: #3498db;
+    color: #fff;
+}
+
+.option-btn.active {
+    background-color: #3498db;
+    color: white;
+}
+
+.icon {
+    margin-right: 10px;
+    font-size: 24px;
+}
+
+.payment-section {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.formulario-compra, .formulario-generar-link {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+input[readonly] {
+    background-color: #f8f8f8;
+    color: #777;
+}
+
+.btn-realizar-compra, .btn-generar-pago {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-realizar-compra:hover, .btn-generar-pago:hover {
+    background-color: #2ecc71;
+}
+
+.btn-generar-pago {
+    background-color: #3498db;
+}
+
+.btn-generar-pago:hover {
+    background-color: #2980b9;
+}
+
+@media (max-width: 768px) {
+    .sections-container {
+        flex-direction: column;
+    }
+
+    .form-row {
+        flex-direction: column;
+    }
+
+    .form-row .form-group {
+        width: 100%;
+    }
+}

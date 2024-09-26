@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo de Productos</title>
+  <link rel="stylesheet" href="/styles.css"> <!-- Vincula el archivo CSS externo -->
+  <link rel="stylesheet" href="/user-info.css"> <!-- Estilos específicos para el user-info -->
+</head>
+<body>
+<header>
+  <div id="user-info">
+    <p id="user-name">Bienvenido, <span id="user-email"></span></p>
+    <div id="session-actions">
+      <button id="logout-button">Cerrar sesión</button>
+    </div>
+  </div>
+</header>
+
+<h1>Perolito Shop</h1>
+
+<div class="productos-grid">
+  <div th:each="producto : ${productos}" class="card">
+    <img th:src="${producto.imagen}" alt="Imagen de ${producto.nombre}" style="width:100%">
+    <h2 class="producto-nombre" th:text="${producto.nombre}"></h2>
+    <p class="price" th:text="'$' + ${producto.precio}"></p>
+    <p class="producto-descripcion" th:text="${producto.descripcion}"></p>
+    <form th:action="@{/carrito}" method="POST">
+      <input type="hidden" name="idProducto" th:value="${producto.id}" />
+      <button type="submit">Agregar al Carrito</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  function checkSession() {
+    fetch('/check-session', {
+      method: 'GET',
+      credentials: 'include'
+    })
+            .then(response => response.json())
+            .then(data => {
+              if (data.user) {
+                document.getElementById('user-email').innerText = data.user;
+              } else {
+                window.location.href = "/login";
+              }
+            })
+            .catch(() => window.location.href = "/login");
+  }
+
+  function logout() {
+    fetch('/logout', {
+      method: 'POST',
+      credentials: 'include'
+    })
+            .then(() => window.location.href = "/login")
+            .catch(error => console.error('Error al cerrar sesión:', error));
+  }
+
+  document.getElementById('logout-button').addEventListener('click', logout);
+  window.onload = checkSession;
+</script>
+</body>
+</html>

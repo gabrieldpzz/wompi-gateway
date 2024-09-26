@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Inicio de Sesión</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/config.js"></script>
+    <script src="/page0.js" type="module"></script>
+</head>
+<body>
+<div class="container">
+    <input type="checkbox" id="check">
+    <div class="login form">
+        <header>Inicio de Sesión</header>
+        <form id="loginForm">
+            <input type="text" id='inUsr' placeholder="Ingresa tu correo" required>
+            <input type="password" id="inPass" placeholder="Ingresa tu contraseña" required>
+            <span class="signup">
+          <a href="#" id="forgotLabel">¿Olvidaste tu contraseña?</a>
+      </span>
+            <input type="button" class="button loginbtn" value="Iniciar Sesión" id="loginBtn">
+        </form>
+        <div class="signup">
+        <span class="signup">¿No tienes una cuenta?
+          <a href="#" id="signupLabel2">Regístrate</a>
+        </span>
+        </div>
+    </div>
+    <div class="registration form">
+        <header>Registro</header>
+        <form action="#">
+            <input type="text" id="name" placeholder="Ingresa tu nombre">
+            <input type="text" id='username' placeholder="Ingresa tu usuario">
+            <input type="text" id='email' placeholder="Ingresa tu correo">
+            <input type="password" id='password' placeholder="Crea una contraseña">
+            <input type="button" class="button signupbtn" value="Registrarse">
+        </form>
+        <div class="signup">
+        <span class="signup">¿Ya tienes una cuenta?
+          <a href="#" id="loginLabel2">Iniciar sesión</a>
+        </span>
+        </div>
+    </div>
+    <div class="forgot form">
+        <header>Reestablecer contraseña</header>
+        <form action="#">
+            <input type="text" id='forgotinp' placeholder="Ingresa tu correo">
+            <input type="button" class="button forgotbtn" value="Enviar">
+        </form>
+        <div class="signup">
+        <span class="signup">¿No tienes una cuenta?
+          <a href="#" id="signupLabel">Regístrate</a>
+        </span>
+        </div>
+        <div class="signup">
+        <span class="signup">¿Ya tienes una cuenta?
+          <a href="#" id="loginLabel">Iniciar Sesión</a>
+        </span>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts de Firebase (si son necesarios) -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+<!-- Script para manejo de login -->
+<script>
+    document.getElementById('loginBtn').addEventListener('click', async function() {
+        const email = document.getElementById('inUsr').value;
+        const password = document.getElementById('inPass').value;
+
+        if (email && password) {
+            try {
+                // Hacer una solicitud POST al servidor para autenticarse
+                const response = await fetch('/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email: email, password: password }),
+                });
+
+                if (response.ok) {
+                    // Si la autenticación fue exitosa, redirigir al usuario a la página de productos
+                    window.location.href = '/productos';
+                } else {
+                    // Mostrar mensaje de error si la autenticación falla
+                    alert('Login failed. Please check your credentials and try again.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+            }
+        } else {
+            alert('Please fill out both fields.');
+        }
+    });
+</script>
+</body>
+</html>
