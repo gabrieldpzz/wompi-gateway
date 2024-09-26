@@ -73,4 +73,8 @@ Crear la tabla productos en la base de datos:
    - GET /: Muestra el formulario para realizar una transacción de compra.
    - POST /transaccion: Realiza una transacción de compra utilizando los datos de la tarjeta de crédito y la información del comprador.
    - POST /transaccion/enlacePago: Genera un enlace de pago para el monto especificado y redirige al usuario a esa URL.
+  
+4. **▶️ DEMO**:
+   [Versión DEMO de la aplicación](http://34.134.234.161:8080/)
+
 
