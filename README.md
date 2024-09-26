@@ -1,8 +1,8 @@
-# Perolito Shop
+# wompi-gateway
 
 ## 📦 Descripción del Proyecto
 
-**Perolito Shop** es un sistema de gestión de productos que permite a los usuarios navegar por un catálogo de productos, agregar artículos a un carrito de compras y realizar compras en línea. La aplicación cuenta con autenticación de usuarios y una interfaz amigable para la gestión de productos.
+**wompi-gateway** es un sistema de gestión de productos que permite a los usuarios navegar por un catálogo de productos, agregar artículos a un carrito de compras y realizar compras en línea. La aplicación cuenta con autenticación de usuarios y una interfaz amigable para la gestión de productos.
 
 ## 🚀 Tecnologías Utilizadas
 
@@ -29,7 +29,7 @@
 1. **Clonar el Repositorio**:
    ```bash
    git clone https://github.com/gabrieldpzz/wompi-gateway.git
-   cd perolito-shop
+   cd wompi-gateway
 
 2. **Configuración de dependencias**:   
 Asegúrese de tener instalado Maven en su sistema. Para instalar Maven, siga las instrucciones en la [documentación oficial](https://maven.apache.org/install.html).
@@ -62,15 +62,15 @@ Crear la tabla productos en la base de datos:
    6. Para cerrar sesión, haga clic en el botón "Cerrar Sesión" en la barra de navegación.
 
 6. **🌐 Rutas de la API**
-    -GET /: Muestra la lista de productos (requiere autenticación).
-    -GET /login: Muestra la página de inicio de sesión.
-    -POST /login: Inicia sesión y establece la sesión del usuario.
-    -POST /carrito: Agrega un producto al carrito.
-    -POST /eliminarUnidad: Elimina una unidad de un producto del carrito.
-    -POST /eliminarTodo: Elimina todas las unidades de un producto del carrito.
+    - GET /: Muestra la lista de productos (requiere autenticación).
+    - GET /login: Muestra la página de inicio de sesión.
+    - POST /login: Inicia sesión y establece la sesión del usuario.
+    - POST /carrito: Agrega un producto al carrito.
+    - POST /eliminarUnidad: Elimina una unidad de un producto del carrito.
+    - POST /eliminarTodo: Elimina todas las unidades de un producto del carrito.
 
 6. **🌐 Rutas de la API Wompi**
-   -GET /: Muestra el formulario para realizar una transacción de compra.
-   -POST /transaccion: Realiza una transacción de compra utilizando los datos de la tarjeta de crédito y la información del comprador.
-   -POST /transaccion/enlacePago: Genera un enlace de pago para el monto especificado y redirige al usuario a esa URL.
+   - GET /: Muestra el formulario para realizar una transacción de compra.
+   - POST /transaccion: Realiza una transacción de compra utilizando los datos de la tarjeta de crédito y la información del comprador.
+   - POST /transaccion/enlacePago: Genera un enlace de pago para el monto especificado y redirige al usuario a esa URL.
 
