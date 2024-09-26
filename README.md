@@ -63,6 +63,7 @@ Crear la tabla productos en la base de datos:
 
 6. **🌐 Rutas de la API**
     -GET /: Muestra la lista de productos (requiere autenticación).
+   
     -GET /login: Muestra la página de inicio de sesión.
     -POST /login: Inicia sesión y establece la sesión del usuario.
     -POST /carrito: Agrega un producto al carrito.
